@@ -1,0 +1,61 @@
+[gd_scene load_steps=5 format=3 uid="uid://c0a7lcp0akqff"]
+
+[ext_resource type="PackedScene" uid="uid://ccvr8ydq11avq" path="res://scenes/component/character_card.tscn" id="1_x8mhf"]
+[ext_resource type="Texture2D" uid="uid://b5yh5nklfmlmm" path="res://assets/character/harimau2.png" id="2_uxcyu"]
+[ext_resource type="Texture2D" uid="uid://7iqgofalp42v" path="res://assets/character/sriga.png" id="3_fa52j"]
+[ext_resource type="Texture2D" uid="uid://yfxkibvbhoss" path="res://assets/character/buay2.png" id="4_uxcyu"]
+
+[node name="CharacterSelect" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+custom_minimum_size = Vector2(600, 400)
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -399.0
+offset_top = -188.5
+offset_right = 399.0
+offset_bottom = 188.5
+grow_horizontal = 2
+grow_vertical = 2
+alignment = 1
+
+[node name="Label" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(600, 300)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 24
+alignment = 1
+
+[node name="CharacterCard" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_x8mhf")]
+layout_mode = 2
+character_id = "harimau"
+character_name = "Harimau Baik"
+character_texture = ExtResource("2_uxcyu")
+
+[node name="CharacterCard2" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_x8mhf")]
+layout_mode = 2
+character_id = "serigala"
+character_name = "Serigala Imut"
+character_texture = ExtResource("3_fa52j")
+
+[node name="CharacterCard3" parent="VBoxContainer/HBoxContainer" instance=ExtResource("1_x8mhf")]
+layout_mode = 2
+character_id = "buaya"
+character_name = "Buaya Jawa"
+character_texture = ExtResource("4_uxcyu")

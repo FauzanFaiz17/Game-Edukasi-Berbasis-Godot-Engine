@@ -1,0 +1,23 @@
+; Engine configuration file.
+; It's best edited using the editor UI and not directly,
+; since the parameters that go here are not all obvious.
+;
+; Format:
+;   [section] ; section goes between []
+;   param=value ; assign values to parameters
+
+config_version=5
+
+[application]
+
+config/name="Game Edukasi Berbasis Godot Engine"
+config/description="Game Edukasi untuk anak-anak tingkat tk dengan menyediakan beberapa game pilihan untuk melatih kemampuan anak, termasuk perhitungan dan ketelitian"
+config/version="0.1"
+run/main_scene="uid://crev2inf1u6xe"
+config/features=PackedStringArray("4.5", "Forward Plus")
+config/icon="res://icon.svg"
+
+[autoload]
+
+Global="*res://autoload/Global.gd"
+AudioManager="*res://scripts/audio_manager.gd"

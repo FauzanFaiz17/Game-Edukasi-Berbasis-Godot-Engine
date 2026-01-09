@@ -1,0 +1,148 @@
+[gd_scene load_steps=7 format=3 uid="uid://c0718fn8idr3d"]
+
+[ext_resource type="Script" uid="uid://dngsr75evonbn" path="res://scripts/minigames/tebak_buah.gd" id="1_vjxqv"]
+[ext_resource type="Texture2D" uid="uid://b46ngch853pxd" path="res://assets/fruits/anggur.png" id="2_f2smc"]
+[ext_resource type="AudioStream" uid="uid://cntu3jbx3ircb" path="res://assets/audio/correct.wav" id="3_ja2sg"]
+[ext_resource type="AudioStream" uid="uid://wt1blsuxswgr" path="res://assets/audio/wrong.wav" id="4_51obo"]
+
+[sub_resource type="Animation" id="Animation_f2smc"]
+resource_name = "popup_in"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8sfag"]
+_data = {
+&"popup_in": SubResource("Animation_f2smc")
+}
+
+[node name="TebakBuah" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_vjxqv")
+
+[node name="AudioCorrect" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_ja2sg")
+
+[node name="AudioWrong" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_51obo")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pertanyaan" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 1
+
+[node name="GridContainer" type="GridContainer" parent="VBoxContainer"]
+layout_mode = 2
+columns = 3
+
+[node name="Jawaban 1" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Jawaban 2" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Jawaban 3" type="Button" parent="VBoxContainer/GridContainer"]
+layout_mode = 2
+
+[node name="Feedback" type="Label" parent="VBoxContainer"]
+layout_mode = 2
+
+[node name="FruitArea" type="FlowContainer" parent="VBoxContainer"]
+custom_minimum_size = Vector2(100, 70)
+layout_mode = 2
+
+[node name="FruitHolder" type="Control" parent="VBoxContainer/FruitArea"]
+custom_minimum_size = Vector2(64, 64)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Fruit" type="TextureRect" parent="VBoxContainer/FruitArea/FruitHolder"]
+layout_direction = 1
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("2_f2smc")
+stretch_mode = 3
+
+[node name="ResultPopup" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -576.0
+offset_top = -324.0
+offset_right = -576.0
+offset_bottom = -324.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="ResultPopup"]
+libraries = {
+&"": SubResource("AnimationLibrary_8sfag")
+}
+
+[node name="Panel" type="Panel" parent="ResultPopup"]
+custom_minimum_size = Vector2(400, 250)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 164.0
+offset_top = 110.0
+offset_right = 1880.0
+offset_bottom = 1020.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="ResultPopup/Panel"]
+layout_mode = 0
+offset_left = 196.0
+offset_top = 172.0
+offset_right = 1602.0
+offset_bottom = 645.0
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="ResultText" type="Label" parent="ResultPopup/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+horizontal_alignment = 1
+vertical_alignment = 1
+autowrap_mode = 2
+uppercase = true
+language = "id_ID"
+
+[node name="HBoxContainer" type="HBoxContainer" parent="ResultPopup/Panel/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_constants/separation = 16
+alignment = 1
+
+[node name="BtnNext" type="Button" parent="ResultPopup/Panel/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(120, 40)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Lanjut Ke Level Berikutnya"
+
+[node name="BtnMenu" type="Button" parent="ResultPopup/Panel/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Kembali ke Menu"
+
+[node name="ColorRect" type="ColorRect" parent="ResultPopup"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0, 0, 0, 1)
